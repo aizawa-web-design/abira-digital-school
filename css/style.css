@@ -127,6 +127,22 @@ a {
   color: var(--color-navy);
 }
 
+.nav-item .btn {
+  width: 134px;
+  height: 40px;
+  border: 2px solid var(--color-navy);
+  background-color: var(--color-accent);
+  font-size: 20px;
+  color: var(--color-navy);
+}
+
+.nav-item .btn:hover {
+  background: var(--grad-white-yellow);
+  border: 2px solid var(--color-navy);
+  color: var(--color-navy);
+  opacity: 1;
+}
+
 /* グラデーションループ */
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
@@ -394,6 +410,41 @@ header ==================================================*/
   animation: gradient-move 3s ease infinite;
 } /* nav-open */
 
+/* lg(992px) */
+@media (min-width: 992px) {
+  .navbar-collapse {
+      position: static !important;
+      width: auto !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      max-height: none !important;
+      overflow-y: visible !important;
+  }
+
+  .nav-item {
+      margin-top: 0 !important;
+      margin-left: 24px;
+      width: auto !important;
+  }
+
+  .nav-link span {
+      display: none !important;
+  }
+
+  .nav-link {
+    padding-bottom: 8px;
+  }
+
+  .navbar-nav .nav-item:last-child:hover {
+    border-bottom: 2px solid transparent !important;
+  }
+
+  .navbar-nav .nav-item:last-child:hover .nav-link {
+    opacity: 1 !important;
+  }
+
+} /* lg(992px) */
+
 /*  ==================================================
 TOP ==================================================*/
 /* main-visual */
@@ -452,6 +503,18 @@ TOP ==================================================*/
   }
 } /* md(768px) */
 
+/* lg(992px) */
+@media (min-width: 576px) {
+  .hero-title-overlay {
+    bottom: 12%;
+    left: 1rem; 
+  }
+
+  .highlight-bg {
+    font-size: clamp(36px, 4.44vw, 64px);;
+  }
+} /* lg(992px) */
+
 /* about */
 .about-title {
   margin-bottom: 24px;
@@ -481,6 +544,18 @@ TOP ==================================================*/
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* lg(992px) */
+@media (min-width: 992px) {
+  .about-title {
+    font-size: 24px !important; 
+  }
+
+  .about-desc-part {
+    display: inline;
+    margin-bottom: 0;
+  }
+} /* lg(992px) */
 
 /* feature */
 .feature-section {
