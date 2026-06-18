@@ -402,6 +402,16 @@ TOP ==================================================*/
   white-space: nowrap;
   line-height: 1.2;
 }
+/* sm(576px) */
+@media (min-width: 576px) {
+  .hero-title-overlay {
+    bottom: -5%; 
+  }
+
+  .hero-section  {
+    padding-bottom: 1rem !important;
+  }
+} /* sm(576px) */
 
 /* about */
 .about-title {
@@ -421,26 +431,27 @@ TOP ==================================================*/
 .about-section {
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .about-bg-marquee {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 100%;
+  transform: translateY(-50%);
+  display: inline-block;
   white-space: nowrap;
-  font-size: 72px;
+  font-size: clamp(72px, 5.2vw + 52.5px, 240px);
   font-family: var(--font-megadot);
   color: var(--color-accent-20);
-  transform: translateY(-50%);
   z-index: -1;
-  animation: marquee 10s linear infinite;
+  animation: marquee 25s linear infinite;
   pointer-events: none;
 }
 
 @keyframes marquee {
-  0% { transform: translateY(-50%) translateX(0); }
-  100% { transform: translateY(-50%) translateX(-50%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* feature */
@@ -539,9 +550,4 @@ footer {
 
 .footer-nav-item .nav-link {
   font-size: 16px;
-}
-
-small {
-  font-size: 12px;
-  font-weight: 300;
 }
