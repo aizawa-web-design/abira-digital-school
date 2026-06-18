@@ -38,6 +38,17 @@ small {
   font-weight: 300;
 }
 
+a {
+  color: var(--color-navy);
+}
+
+@media (min-width: 992px) {
+  .tel-link {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
 /* --- タイポグラフィクラス --- */
 
 /* ナビゲーション */
@@ -79,13 +90,6 @@ small {
   letter-spacing: 0;
 }
 
-/* 装飾用テキスト */
-.text-decor {
-  font-family: var(--font-megadot);
-  line-height: auto;
-  letter-spacing: 0;
-}
-
 /* --- コンポーネント調整 --- */
 
 /* ボタン */
@@ -123,7 +127,7 @@ small {
   color: var(--color-navy);
 }
 
-/* アニメーション（グラデーションループ） */
+/* グラデーションループ */
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -201,11 +205,14 @@ small {
 }
 
 .section-title-bg {
+  font-family: var(--font-megadot);
+  line-height: auto;
+  letter-spacing: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 64px;
+  font-size: clamp(64px, 5.98vw + 41.59px, 128px);
   color: var(--color-white);
   z-index: 0;
   white-space: nowrap;
@@ -250,6 +257,26 @@ small {
   background-color: var(--color-white);
 }
 
+/* マーキーテキスト */
+.marquee-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--font-megadot);
+  letter-spacing: 0;
+  color: var(--color-accent-20);
+  z-index: -1;
+  animation: marquee 25s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 /*  ==================================================
 header ==================================================*/
 
@@ -365,7 +392,7 @@ header ==================================================*/
   border: 2px var(--color-accent) solid;
   background-size: 200% 100%;
   animation: gradient-move 3s ease infinite;
-}
+} /* nav-open */
 
 /*  ==================================================
 TOP ==================================================*/
@@ -413,6 +440,18 @@ TOP ==================================================*/
   }
 } /* sm(576px) */
 
+/* md(768px) */
+@media (min-width: 576px) {
+  .hero-image-wrapper {
+    width: 76%;
+  }
+
+  .hero-title-overlay {
+    bottom: 12%;
+    left: 1rem; 
+  }
+} /* md(768px) */
+
 /* about */
 .about-title {
   margin-bottom: 24px;
@@ -434,19 +473,8 @@ TOP ==================================================*/
   overflow: hidden;
 }
 
-.about-bg-marquee {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  display: inline-block;
-  white-space: nowrap;
+.about-section .marquee-text {
   font-size: clamp(72px, 5.2vw + 52.5px, 240px);
-  font-family: var(--font-megadot);
-  color: var(--color-accent-20);
-  z-index: -1;
-  animation: marquee 25s linear infinite;
-  pointer-events: none;
 }
 
 @keyframes marquee {
@@ -497,23 +525,14 @@ TOP ==================================================*/
 /* contact */
 .contact-section {
   overflow: hidden;
-}
-
-.marquee-wrapper {
   position: relative;
 }
 
-.contact-bg-marquee {
-  position: absolute;
-  top: 0;
+.contact-section .marquee-text {
+  top: 4%;
   left: 0;
-  width: 100%;
-  white-space: nowrap;
-  font-size: 48px;
-  color: var(--color-accent-20);
+  font-size: clamp(48px, 2.25vw + 39.56px, 72px);
   z-index: 1;
-  animation: marquee 10s linear infinite;
-  pointer-events: none;
 }
 
 .contact-info-row {
@@ -521,6 +540,14 @@ TOP ==================================================*/
   align-items: center;
   width: 100%;
   max-width: 270px;
+}
+
+.contact-info-row a {
+  transition: all var(--transition-speed) ease;
+}
+
+.contact-info-row a:hover {
+  opacity: 0.6;
 }
 
 /*  ==================================================
