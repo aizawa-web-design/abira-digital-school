@@ -10,6 +10,7 @@ common ==================================================*/
   --color-main: #d9f9ff;
   --color-accent: #ff9f43;
   --color-accent-20: rgba(255, 159, 67, 0.2);
+  --color-attention: #B3261E;
 
   /* --- グラデーション（ホバー・背景用） --- */
   --grad-navy-orange: linear-gradient(135deg, var(--color-navy), #cc5500);
@@ -36,12 +37,17 @@ body {
 small {
   font-size: 12px;
   font-weight: 300;
+  line-height: 120%;
+  letter-spacing: 0;
 }
 
 a {
   color: var(--color-navy);
 }
 
+.attention {
+  color: var(--color-attention);
+}
 @media (min-width: 992px) {
   .tel-link {
     pointer-events: none;
@@ -211,6 +217,47 @@ a {
   color: var(--color-white);
 }
 
+/* カード */
+.card {
+  background-color: transparent;
+}
+
+.card-img-wrapper {
+  padding-right: 8px;
+}
+
+.card-border {
+  aspect-ratio: 339 / 204;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 4px solid var(--color-accent);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.theme-blue .card-body {
+  background-color: var(--color-white);
+}
+
+.card-body {
+  margin-top: -16px;
+  margin-left: 8px;
+  padding-top: 40px;
+  background-color: var(--color-main);
+  position: relative;
+  z-index: 0;
+}
+
+/* xl(1200px) */
+@media (min-width: 1200px) {
+  .card-body h3 {
+    font-size: clamp(16px, 0.75vw + 13.19px, 24px);;
+  }
+} /* xl(1200px) */
+
 /* セクションタイトル */
 .section-title-wrapper {
   position: relative;
@@ -323,6 +370,118 @@ a {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* 画面インアニメーション */
+.js-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+.js-fade-in-up.is-visible {
+  animation: pop-up 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes pop-up {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+/* swiper */
+.swiper {
+  padding: 0 1.5rem;
+}
+
+.swiper-button-prev, 
+.swiper-button-next {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  border: 2px solid var(--color-accent);
+  color: var(--color-white);
+  transition: all var(--transition-speed) ease;
+}
+
+.swiper-button-prev:hover, 
+.swiper-button-next:hover {
+  background: var(--grad-navy-orange);
+  border: 2px solid var(--color-accent);
+  background-size: 200% 100%;
+  animation: gradient-move 3s ease infinite;
+}
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+    display: none !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: "" !important;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid var(--color-white);
+    border-right: 3px solid var(--color-white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.swiper-button-prev::after {
+    transform: translate(-25%, -50%) rotate(-135deg);
+}
+
+.swiper-button-next::after {
+    transform: translate(-75%, -50%) rotate(45deg);
+}
+
+.swiper-pagination {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-navy);
+  outline: 2px solid var(--color-accent);
+}
+
+/* 注釈 */
+/* リスト全体のスタイル */
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 各項目のスタイル */
+.note-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.note-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-navy);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
 /*  ==================================================
 header ==================================================*/
 
@@ -624,31 +783,6 @@ TOP ==================================================*/
   padding-top: 0 !important;
 }
 
-.card-img-wrapper {
-  padding-right: 8px;
-}
-
-.card-border {
-  aspect-ratio: 339 / 204;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 4px solid var(--color-accent);
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  z-index: 10;
-}
-
-.card-body {
-  margin-top: -16px;
-  margin-left: 8px;
-  padding-top: 40px;
-  background-color: var(--color-main);
-  position: relative;
-  z-index: 0;
-}
-
 /* xl(1200px) */
 @media (min-width: 1200px) {
   .card-body h3 {
@@ -786,3 +920,30 @@ footer {
     font-size: 32px;
   }
 }
+
+/*  ==================================================
+ABOUT ==================================================*/
+/* page-header */
+.page-header .marquee-text {
+  font-size: clamp(72px, 8.18vw + 41.33px, 160px);
+}
+
+.page-desc-part {
+  display: block;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.page-desc-part:last-child {
+  margin-bottom: 0;
+}
+
+/* lg(992px) */
+@media (min-width: 992px) {
+  .page-desc-part {
+    display: inline;
+    margin-bottom: 0;
+  }
+} /* lg(992px) */
+
+/* menu */
