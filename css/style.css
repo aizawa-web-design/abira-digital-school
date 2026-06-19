@@ -299,18 +299,23 @@ a {
 } /* xl(1200px) */
 
 /* マーキーテキスト */
-.marquee-text {
+.marquee-container {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.marquee-text {
   display: inline-block;
   white-space: nowrap;
   font-family: var(--font-megadot);
   letter-spacing: 0;
   color: var(--color-accent-20);
-  z-index: -1;
-  animation: marquee 25s linear infinite;
+  animation: marquee 40s linear infinite;
   pointer-events: none;
 }
 
@@ -676,13 +681,6 @@ TOP ==================================================*/
   position: relative;
 }
 
-.contact-section .marquee-text {
-  top: 4%;
-  left: 0;
-  font-size: clamp(48px, 2.25vw + 39.56px, 72px);
-  z-index: 1;
-}
-
 .contact-info-row {
   display: flex;
   align-items: center;
@@ -698,8 +696,25 @@ TOP ==================================================*/
   opacity: 0.6;
 }
 
+.contact-section .marquee-container {
+  top: 0;
+  height: auto;
+}
+
 .contact-section .marquee-text {
-  animation: marquee 60s linear infinite;
+  position: relative;
+  top: 0;
+  font-size: clamp(48px, 2.25vw + 39.56px, 72px);
+  animation: marquee-contact 40s linear infinite;
+}
+
+@keyframes marquee-contact {
+  0% { 
+    transform: translateX(0) translateY(100%); 
+  }
+  100% { 
+    transform: translateX(-50%) translateY(100%); 
+  }
 }
 
 /* lg(992px) */
@@ -710,10 +725,6 @@ TOP ==================================================*/
 
   .contact-staff {
     font-size: 18px;
-  }
-
-  .contact-section .marquee-text {
-    top: 6%;
   }
 } /* lg(992px) */
 
