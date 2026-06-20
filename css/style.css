@@ -47,6 +47,7 @@ a {
 
 .attention {
   color: var(--color-attention);
+  font-size: 12px;
 }
 @media (min-width: 992px) {
   .tel-link {
@@ -366,8 +367,9 @@ a {
   font-family: var(--font-megadot);
   letter-spacing: 0;
   color: var(--color-accent-20);
-  animation: marquee 40s linear infinite;
+  animation: marquee 60s linear infinite;
   pointer-events: none;
+  min-width: 200%;
 }
 
 @keyframes marquee {
@@ -461,15 +463,43 @@ a {
   outline: 2px solid var(--color-accent);
 }
 
+/*  lg(992px) */
+@media screen and (min-width: 992px) {
+  .swiper {
+    width: 100%;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem 1rem;
+  }
+  
+  .swiper-slide {
+    width: calc(33.333% - 20px);
+  }
+
+  .swiper-button-prev, 
+  .swiper-button-next, 
+  .swiper-pagination {
+    display: none;
+  }
+} /*  lg(992px) */
+
+/* xl(1200px) */
+@media screen and (min-width: 1200px) {
+  .swiper-slide {
+    flex: 0 0 calc((100% - 16px * 3) / 4);
+  }
+}
 /* 注釈 */
-/* リスト全体のスタイル */
 .note-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* 各項目のスタイル */
 .note-item {
   display: flex;
   align-items: flex-start;
@@ -843,7 +873,7 @@ TOP ==================================================*/
   position: relative;
   top: 0;
   font-size: clamp(48px, 2.25vw + 39.56px, 72px);
-  animation: marquee-contact 40s linear infinite;
+  animation: marquee-contact 80s linear infinite;
 }
 
 @keyframes marquee-contact {
