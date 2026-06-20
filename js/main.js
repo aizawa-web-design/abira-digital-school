@@ -18,19 +18,47 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 targets.forEach(target => observer.observe(target));
 
-// menuスライダーの初期化
-document.addEventListener('DOMContentLoaded', () => {
-    const featuresSwiper = new Swiper(".swiper-menu", {
-        loop: true,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-    console.log("Swiper初期化完了");
-});
+// スライダー用の変数を初期化
+let swiperMenu = null;
+const mediaQuery = window.matchMedia('(max-width: 991px)');
+
+const initSwiper = () => {
+    // Swiperがまだ生成されていない場合のみ生成
+    if (!swiperMenu) {
+        swiperMenu = new Swiper('.swiper-menu', {
+            loop: true,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
+};
+
+const destroySwiper = () => {
+    // Swiperが存在する場合のみ破棄
+    if (swiperMenu) {
+        swiperMenu.destroy(true, true); // true, trueでスタイルもリセット
+        swiperMenu = null;
+    }
+};
+
+// 画面幅による切り替え判定
+const handleBreakpoint = (e) => {
+    if (e.matches) {
+        // 991px以下のとき：スライダー有効
+        initSwiper();
+    } else {
+        // 992px以上のとき：スライダー解除
+        destroySwiper();
+    }
+};
+
+// 初回実行と、画面幅変更時のリスナー登録
+handleBreakpoint(mediaQuery);
+mediaQuery.addEventListener('change', handleBreakpoint);

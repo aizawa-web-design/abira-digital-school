@@ -49,6 +49,10 @@ a {
   color: var(--color-attention);
   font-size: 12px;
 }
+
+.link-text {
+  color: var(--color-accent) !important;
+}
 @media (min-width: 992px) {
   .tel-link {
     pointer-events: none;
@@ -516,6 +520,35 @@ a {
   flex-shrink: 0;
 }
 
+/* アコーディオン */
+.accordion-item {
+  color: var(--color-navy);
+}
+
+.accordion-button::after {
+  background-image: url('../images/icon_arrow_back_ios_new.svg') !important;
+  transform: rotate(-90deg);
+  background-size: 18px 18px !important;
+  background-position: calc(50% - 2px)center !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--color-navy);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-color: var(--color-white);
+  background-image: url('../images/icon-arrow_back_ios_new_navy.svg') !important;
+  transform: rotate(90deg) !important;
+  background-position: center !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+  color: var(--color-navy);
+}
 /*  ==================================================
 header ==================================================*/
 
@@ -989,3 +1022,29 @@ ABOUT ==================================================*/
     margin-bottom: 0;
   }
 } /* xl(1200px) */
+
+/*  ==================================================
+JOIN ==================================================*/
+/* schedule */
+.schedule-section .badge-fixed {
+  width: 96px;
+}
+
+.list-group-item ul li {
+  list-style-type: disc;
+}
+
+/* entry */
+.entry-section .attention {
+  font-size: 18px;
+}
+
+.entry-section .badge-fixed {
+  width: 108px;
+}
+
+.body-cta {
+  background-color: var(--color-accent);
+  border: 2px var(--color-navy) solid;
+  color: var(--color-navy);
+}
