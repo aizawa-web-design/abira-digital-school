@@ -1,225 +1,245 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <!-- ウェブフォント -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <script>
-      (function(d) {
-        var config = {
-          kitId: 'smz6muh',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
-    </script>
-    <!-- css -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-white sticky-top">
-          <div class="container d-flex justify-content-between align-items-center">
-              <a class="navbar-brand site-title animated-grad-text" href="#">あびら<br class="d-sm-none">デジタルスクール</a>
-              <!-- スマホ版：右側の配置（CTAボタン + ハンバーガーアイコン） -->
-              <div class="d-flex align-items-center d-lg-none ms-auto">
-                  <a class="btn header-cta" href="#">参加申込</a>
-                  <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <div class="menu-line"></div>
-                    <div class="menu-line"></div>
-                    <div class="menu-line"></div>
-                  </button>
-              </div>
-              <!-- メニューの中身 -->
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto align-items-center">
-                      <!-- 通常メニュー -->
-                      <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center" href="#">デジタルスクールについて<span>&gt;</span></a></li>
-                      <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center" href="#">施設・設備<span>&gt;</span></a></li>
-                      <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center" href="#">お知らせ<span>&gt;</span></a></li>
-                      <!-- スマホ版でのみ表示する項目（d-lg-none でPCでは消える） -->
-                      <li class="nav-item d-lg-none"><a class="nav-link d-flex justify-content-between align-items-center" href="#">プライバシーポリシー<span>&gt;</span></a></li>
-                      <li class="site-link-section d-lg-none">
-                        <p class="site-link-desc">デジタルスクールは安平町が実施する<br>「あびらデジタル体験事業」です</p>
-                        <a class="btn site-link-btn" href="#">安平町公式サイトへ<i class="bi bi-box-arrow-up-right ms-2"></i>
-                        </a>
-                      </li>
-                      <!-- PC版のみ表示するCTAボタン（d-none d-lg-block でスマホでは消える） -->
-                      <li class="nav-item d-none d-lg-block ms-lg-3">
-                          <a class="nav-link btn" href="#">参加申込</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-    </header>
-    <section class="hero-section py-4">
-      <div class="container">
-        <div class="hero-container position-relative">
-          <!-- 1. メイン画像（右寄せ） -->
-          <div class="hero-image-wrapper ms-auto js-fade-in-up">
-            <img src="/images/feature03.jpg" alt="デジタルの世界を体験しよう" class="img-fluid img-main">
-          </div>
-          <!-- 2. キャッチコピー（画像の上に絶対配置） -->
-          <div class="hero-title-overlay">
-            <div class="hero-title">
-              <h1 class="highlight-bg">デジタルの世界を</h1><br><span class="highlight-bg">体験しよう</span>
-            </div>
-          </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <!-- ウェブフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <script>
+    (function (d) {
+      var config = {
+        kitId: 'smz6muh',
+        scriptTimeout: 3000,
+        async: true
+      },
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
+  <!-- css -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand site-title animated-grad-text" href="#">あびら<br class="d-sm-none">デジタルスクール</a>
+        <!-- スマホ版：右側の配置（CTAボタン + ハンバーガーアイコン） -->
+        <div class="d-flex align-items-center d-lg-none ms-auto">
+          <a class="btn header-cta" href="#">参加申込</a>
+          <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+          </button>
         </div>
-      </div>
-    </section>
-    <section class="about-section position-relative overflow-hidden py-5 px-3">
-      <div class="marquee-container">
-        <div class="marquee-text">
-          <span>ABOUT US・ABOUT US・ABOUT US・ABOUT US・</span>
-          <span>ABOUT US・ABOUT US・ABOUT US・ABOUT US・</span>
-        </div>
-      </div>
-      <div class="container about-content position-relative z-index-2 px-lg-4">
-        <div class="text-center" style="max-width: 1040px; margin: 0 auto;">
-          <h2 class="about-title animated-grad-text h-s heading-base ">最新のデジタル技術が安平町に集結！</h2>
-          <p class="about-desc animated-grad-text text-lg-start">
-            <span class="about-desc-part">あびらデジタルスクール（デジタル体験事業）は町内に住む子どもたちが気軽に最新テクノロジーと触れ合える場です。</span>
-            <span class="about-desc-part">一人ひとりの「やってみたい」を育てることで創造力や論理的思考力を自然に引き出し、“未来を拓く力”が身につくようサポートしていきます。</span>
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="feature-section py-5">
-        <div class="container">
-          <div class="row g-5">
-            <div class="col-xl-4">
-              <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
-                <div class="card-img-wrapper">
-                  <img src="/images/feature01.jpg" class="card-img-top card-border" alt="">
-                </div>
-                <div class="card-body d-flex flex-column align-items-center">
-                  <h3 h-m heading-base>デジタルの楽しさと出会う</h3>
-                  <p>あびらデジタルスクールではお子さんの好奇心を大切にしながら新しい学びの場を提供しています。</p>
-                  <a href="#" class="btn">デジタルスクールについて<i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4">
-              <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
-                <div class="card-img-wrapper">
-                  <img src="/images/feature02.jpg" class="card-img-top card-border" alt="">
-                </div>
-                <div class="card-body d-flex flex-column align-items-center">
-                  <h3 h-m heading-base>無料でチャレンジできる</h3>
-                  <p>町内在住の小学2年生〜中学3年生であれば、誰でも無料であびらデジタルスクールに参加できます。</p>
-                  <a href="#" class="btn">参加申込について<i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4">
-              <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
-                <div class="card-img-wrapper">
-                  <img src="/images/feature03.jpg" class="card-img-top card-border" alt="">
-                </div>
-                <div class="card-body d-flex flex-column align-items-center">
-                  <h3 h-m heading-base>アイデアを形にできる環境</h3>
-                  <p>頭に描いたものをその場でかたちにできる。創造性がどんどん広がる。そんな環境づくりに努めています。</p>
-                  <a href="#" class="btn">施設・設備について<i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
-    <section class="update-section py-5 theme-blue">
-        <div class="container section-container-fluid">
-          <div class="section-title-wrapper mb-5 js-fade-in-up">
-            <div class="section-title-bg">UPDATE</div>
-            <h3 class="text-center h-sp heading-base ">新着お知らせ</h3>
-          </div>
-          <div class="section-content-box">
-            <div class="inner-box p-2 p-sm-4 border-0">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
-                  <div class="d-flex flex-shrink-0 align-items-center mb-2">
-                    <span class="badge label-date label-base me-2">施設案内</span>
-                    <time datetime="0000-00-00" class="label-date label-base">2026年06月15日</time>
-                  </div>
-                  <a href="#" class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へお知らせタイトルが入ります。クリックで詳細へお知らせタイトルが入ります。クリックで詳細へ</a>
-                </li>
-                <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
-                  <div class="d-flex flex-shrink-0 align-items-center mb-2">
-                    <span class="badge label-date label-base me-2">施設案内</span>
-                    <time datetime="0000-00-00"  class="label-date label-base">2026年06月15日</time>
-                  </div>
-                  <a href="#" class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へ</a>
-                </li>
-                <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
-                  <div class="d-flex flex-shrink-0 align-items-center mb-2">
-                    <span class="badge  label-date label-base me-2">施設案内</span>
-                    <time datetime="0000-00-00"  class="label-date label-base">2026年06月15日</time>
-                  </div>
-                  <a href="#" class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へ</a>
-                </li>
-              </ul>
-            <div class="text-center py-3">
-              <a href="#" class="btn btn-inner-box">ほかのお知らせを見る<i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-    </section>
-    <section class="contact-section py-5 theme-white position-relative overflow-hidden">
-      <div class="marquee-container">
-        <div class="marquee-text">
-          CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・
-        </div>
-      </div>
-      <div class="container section-container-fluid">
-        <div class="section-title-wrapper mb-5">
-          <h3 class="text-center heading-base h-sp">お問い合わせ</h3>
-        </div>
-        <div class="section-content-box">
-          <div class="inner-box border-0 p-4 text-center">
-            <h4 class="h-s heading-base mb-2 mb-lg-3">安平町役場総務課情報グループ</h4>
-            <p class="contact-staff h-sp-s heading-base mb-4">（担当：山田 花子）</p>
-            <div class="d-flex flex-column align-items-center gap-2">
-              <div class="d-flex flex-column flex-lg-row align-items-center align-items-center gap-2">
-                <div class="contact-info-row text-nowrap">
-                  <span class="badge badge-fixed me-2 label-btn label-base">MAIL</span>
-                  <a href="mailto:mail-address@abira.jp" class="h-s heading-base text-decoration-none">mail-address@abira.jp</a>
-                </div>
-                <div class="contact-info-row text-nowrap ms-lg-4">
-                  <span class="badge badge-fixed me-2 label-btn label-base">TEL</span>
-                  <a href="tel:0000-00-0000" class="h-s heading-base text-decoration-none tel-link">0000-00-0000</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="pt-5 pb-2">
-        <div class="container text-center">
-          <div class="title-wrapper my-4 my-xl-0 mb-xl-5">
-            <a class="footer-title animated-grad-text-white text-decoration-none " href="#">あびらデジタルスクール</a>
-          </div>
-          <p class="footer-desc mb-3">デジタルスクールは安平町が実施する<br class="d-md-none">「あびらデジタル体験事業」です</p>
-          <a href="#" class="btn site-link-btn mb-5">安平町公式ウェブサイトへ<i class="bi bi-box-arrow-up-right"></i></a>
-          <ul class="nav flex-column flex-lg-row align-items-center justify-content-center border-0 mb-5 mb-lg-4">
-            <li class="nav-item footer-nav-item"><a href="#" class="nav-link d-flex justify-content-between align-items-center text-white">デジタルスクールについて<span>&gt;</span></a></li>
-            <li class="nav-item footer-nav-item"><a href="#" class="nav-link d-flex justify-content-between align-items-center text-white">施設・設備<span>&gt;</span></a></li>
-            <li class="nav-item footer-nav-item"><a href="#" class="nav-link nav-link d-flex justify-content-between align-items-center text-white">お知らせ<span>&gt;</span></a></li>
-            <li class="nav-item footer-nav-item"><a href="#" class="nav-link d-flex justify-content-between align-items-center text-white">参加申込<span>&gt;</span></a></li>
-            <li class="nav-item footer-nav-item"><a href="#" class="nav-link d-flex justify-content-between align-items-center text-white">プライバシーポリシー<span>&gt;</span></a></li>
+        <!-- メニューの中身 -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 通常メニュー -->
+            <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center"
+                href="#">デジタルスクールについて<span>&gt;</span></a></li>
+            <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center"
+                href="#">施設・設備<span>&gt;</span></a></li>
+            <li class="nav-item"><a class="nav-link d-flex justify-content-between align-items-center"
+                href="#">お知らせ<span>&gt;</span></a></li>
+            <!-- スマホ版でのみ表示する項目（d-lg-none でPCでは消える） -->
+            <li class="nav-item d-lg-none"><a class="nav-link d-flex justify-content-between align-items-center"
+                href="#">プライバシーポリシー<span>&gt;</span></a></li>
+            <li class="site-link-section d-lg-none">
+              <p class="site-link-desc">デジタルスクールは安平町が実施する<br>「あびらデジタル体験事業」です</p>
+              <a class="btn site-link-btn" href="#">安平町公式サイトへ<i class="bi bi-box-arrow-up-right ms-2"></i>
+              </a>
+            </li>
+            <!-- PC版のみ表示するCTAボタン（d-none d-lg-block でスマホでは消える） -->
+            <li class="nav-item d-none d-lg-block ms-lg-3">
+              <a class="nav-link btn" href="#">参加申込</a>
+            </li>
           </ul>
-          <small class="text-white">&copy;2026 あびらデジタルスクール</small>
         </div>
-    </footer>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+      </div>
+    </nav>
+  </header>
+  <section class="hero-section py-4">
+    <div class="container">
+      <div class="hero-container position-relative">
+        <!-- 1. メイン画像（右寄せ） -->
+        <div class="hero-image-wrapper ms-auto js-fade-in-up">
+          <img src="/images/feature03.jpg" alt="デジタルの世界を体験しよう" class="img-fluid img-main">
+        </div>
+        <!-- 2. キャッチコピー（画像の上に絶対配置） -->
+        <div class="hero-title-overlay">
+          <div class="hero-title">
+            <h1 class="highlight-bg">デジタルの世界を<span class="highlight-bg">体験しよう</span></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about-section position-relative overflow-hidden py-5 px-3">
+    <div class="marquee-container">
+      <div class="marquee-text">
+        <span>ABOUT US・ABOUT US・ABOUT US・ABOUT US・</span>
+        <span>ABOUT US・ABOUT US・ABOUT US・ABOUT US・</span>
+      </div>
+    </div>
+    <div class="container about-content position-relative z-index-2 px-lg-4">
+      <div class="text-center" style="max-width: 1040px; margin: 0 auto;">
+        <h2 class="about-title animated-grad-text h-s heading-base ">最新のデジタル技術が安平町に集結！</h2>
+        <p class="about-desc animated-grad-text text-lg-start">
+          <span class="about-desc-part">あびらデジタルスクール（デジタル体験事業）は町内に住む子どもたちが気軽に最新テクノロジーと触れ合える場です。</span>
+          <span class="about-desc-part">一人ひとりの「やってみたい」を育てることで創造力や論理的思考力を自然に引き出し、“未来を拓く力”が身につくようサポートしていきます。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="feature-section py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-xl-4">
+          <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
+            <div class="card-img-wrapper">
+              <img src="/images/feature01.jpg" class="card-img-top card-border" alt="">
+            </div>
+            <div class="card-body d-flex flex-column align-items-center">
+              <h3 class="h-m heading-base">デジタルの楽しさと出会う</h3>
+              <p>あびらデジタルスクールではお子さんの好奇心を大切にしながら新しい学びの場を提供しています。</p>
+              <a href="#" class="btn">デジタルスクールについて<i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
+            <div class="card-img-wrapper">
+              <img src="/images/feature02.jpg" class="card-img-top card-border" alt="">
+            </div>
+            <div class="card-body d-flex flex-column align-items-center">
+              <h3 class="h-m heading-base">無料でチャレンジできる</h3>
+              <p>町内在住の小学2年生〜中学3年生であれば、誰でも無料であびらデジタルスクールに参加できます。</p>
+              <a href="#" class="btn">参加申込について<i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
+            <div class="card-img-wrapper">
+              <img src="/images/feature03.jpg" class="card-img-top card-border" alt="">
+            </div>
+            <div class="card-body d-flex flex-column align-items-center">
+              <h3 class="h-m heading-base">アイデアを形にできる環境</h3>
+              <p>頭に描いたものをその場でかたちにできる。創造性がどんどん広がる。そんな環境づくりに努めています。</p>
+              <a href="#" class="btn">施設・設備について<i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="update-section py-5 theme-blue">
+    <div class="container section-container-fluid">
+      <div class="section-title-wrapper mb-5 js-fade-in-up">
+        <div class="section-title-bg">UPDATE</div>
+        <h2 class="text-center h-sp heading-base ">新着お知らせ</h2>
+      </div>
+      <div class="section-content-box">
+        <div class="inner-box p-2 p-sm-4 border-0">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
+              <div class="d-flex flex-shrink-0 align-items-center mb-2">
+                <span class="badge label-date label-base me-2">施設案内</span>
+                <time datetime="2026-06-26" class="label-date label-base">2026年06月15日</time>
+              </div>
+              <a href="#"
+                class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へお知らせタイトルが入ります。クリックで詳細へお知らせタイトルが入ります。クリックで詳細へ</a>
+            </li>
+            <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
+              <div class="d-flex flex-shrink-0 align-items-center mb-2">
+                <span class="badge label-date label-base me-2">施設案内</span>
+                <time datetime="2026-06-26" class="label-date label-base">2026年06月15日</time>
+              </div>
+              <a href="#" class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へ</a>
+            </li>
+            <li class="list-group-item d-flex flex-column flex-lg-row align-items-start bg-transparent border-0 py-3">
+              <div class="d-flex flex-shrink-0 align-items-center mb-2">
+                <span class="badge  label-date label-base me-2">施設案内</span>
+                <time datetime="2026-06-26" class="label-date label-base">2026年06月15日</time>
+              </div>
+              <a href="#" class="h-sp-s heading-base">お知らせタイトルが入ります。クリックで詳細へ</a>
+            </li>
+          </ul>
+          <div class="text-center py-3">
+            <a href="#" class="btn btn-inner-box">ほかのお知らせを見る<i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div> <!-- inner-boxここまで -->
+      </div> <!-- section-content-boxここまで -->
+    </div> <!-- containerここまで -->
+  </section>
+  <section class="contact-section py-5 theme-white position-relative overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-text">
+        CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・CONTACT・
+      </div>
+    </div>
+    <div class="container section-container-fluid">
+      <div class="section-title-wrapper mb-5">
+        <h2 class="text-center heading-base h-sp">お問い合わせ</h2>
+      </div>
+      <div class="section-content-box">
+        <div class="inner-box border-0 p-4 text-center">
+          <p class="h-s heading-base mb-2 mb-lg-3">安平町役場総務課情報グループ</p>
+          <p class="contact-staff h-sp-s heading-base mb-4">（担当：山田 花子）</p>
+          <div class="d-flex flex-column align-items-center gap-2">
+            <div class="d-flex flex-column flex-lg-row align-items-center align-items-center gap-2">
+              <div class="contact-info-row text-nowrap">
+                <span class="badge badge-fixed me-2 label-btn label-base">MAIL</span>
+                <a href="mailto:mail-address@abira.jp"
+                  class="h-s heading-base text-decoration-none">mail-address@abira.jp</a>
+              </div>
+              <div class="contact-info-row text-nowrap ms-lg-4">
+                <span class="badge badge-fixed me-2 label-btn label-base">TEL</span>
+                <a href="tel:0000-00-0000" class="h-s heading-base text-decoration-none tel-link">0000-00-0000</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="pt-5 pb-2">
+    <div class="container text-center">
+      <div class="title-wrapper my-4 my-xl-0 mb-xl-5">
+        <a class="footer-title animated-grad-text-white text-decoration-none " href="#">あびらデジタルスクール</a>
+      </div>
+      <p class="footer-desc mb-3">デジタルスクールは安平町が実施する<br class="d-md-none">「あびらデジタル体験事業」です</p>
+      <a href="#" class="btn site-link-btn mb-5">安平町公式ウェブサイトへ<i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="nav flex-column flex-lg-row align-items-center justify-content-center border-0 mb-5 mb-lg-4">
+        <li class="nav-item footer-nav-item"><a href="#"
+            class="nav-link d-flex justify-content-between align-items-center text-white">デジタルスクールについて<span>&gt;</span></a>
+        </li>
+        <li class="nav-item footer-nav-item"><a href="#"
+            class="nav-link d-flex justify-content-between align-items-center text-white">施設・設備<span>&gt;</span></a>
+        </li>
+        <li class="nav-item footer-nav-item"><a href="#"
+            class="nav-link nav-link d-flex justify-content-between align-items-center text-white">お知らせ<span>&gt;</span></a>
+        </li>
+        <li class="nav-item footer-nav-item"><a href="#"
+            class="nav-link d-flex justify-content-between align-items-center text-white">参加申込<span>&gt;</span></a></li>
+        <li class="nav-item footer-nav-item"><a href="#"
+            class="nav-link d-flex justify-content-between align-items-center text-white">プライバシーポリシー<span>&gt;</span></a>
+        </li>
+      </ul>
+      <small class="text-white">&copy;2026 あびらデジタルスクール</small>
+    </div>
+  </footer>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
