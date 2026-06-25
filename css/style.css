@@ -1177,3 +1177,28 @@ FACILITY ==================================================*/
     font-size: 32px;
   }
  } /* xl(1200px) */
+
+ /*  ==================================================
+NEWS ==================================================*/
+/* info */
+#load-more-btn {
+  width: 291px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.info-section .accordion-button::after {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.info-section .accordion-button:not(.collapsed) {
+    color: var(--color-white);
+}
+
+.info-section .accordion-button:not(.collapsed)::after {
+  background-image: url(../images/icon_arrow_back_ios_new.svg) !important;
+  transform: rotate(90deg) !important;
+  background-position: center !important;
+}

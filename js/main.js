@@ -62,3 +62,46 @@ const handleBreakpoint = (e) => {
 // 初回実行と、画面幅変更時のリスナー登録
 handleBreakpoint(mediaQuery);
 mediaQuery.addEventListener('change', handleBreakpoint);
+
+// お知らせ一覧の「さらに見る」
+document.addEventListener("DOMContentLoaded", () => {
+    const newsList = document.getElementById('news-list');
+    if (!newsList) return;
+  
+    const listItems = newsList.querySelectorAll(':scope > li');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    
+    // 5件以下の場合はボタンを非表示にする
+    if (listItems.length <= 5) {
+        if (loadMoreBtn) loadMoreBtn.parentElement.style.display = 'none';
+        return;
+    }
+  
+    // 初期化実行（ボタンにも collapsed を付ける）
+    const hideItems = () => {
+        listItems.forEach((item, index) => {
+            if (index >= 5) item.classList.add('d-none');
+        });
+        loadMoreBtn.innerHTML = 'さらに見る';
+        loadMoreBtn.classList.add('collapsed'); // アイコンを下向きに
+    };
+    hideItems();
+
+    // ボタンクリック時の挙動
+    loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // collapsedクラスを持っているか（閉じているか）で判定
+        const isCollapsed = loadMoreBtn.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            // 開く処理
+            listItems.forEach(item => item.classList.remove('d-none'));
+            loadMoreBtn.innerHTML = 'もとに戻す';
+            loadMoreBtn.classList.remove('collapsed'); // アイコンを上向きに
+        } else {
+            // 閉じる処理
+            hideItems();
+        }
+    });
+});
