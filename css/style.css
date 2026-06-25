@@ -1230,3 +1230,17 @@ PRIVACY
   word-break: break-all;
 }
 
+/*  ==================================================
+PRIVACY
+==================================================*/
+.article-section img {
+  width: 100%;
+  height: auto;
+}
+
+/* lg(992px) */
+@media screen and (min-width: 992px) {
+  .article-section h2 {
+    font-size: 40px;
+  }
+} /* lg(992px) */
