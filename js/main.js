@@ -105,3 +105,46 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// 活動報告一覧の「さらに見る」
+document.addEventListener("DOMContentLoaded", () => {
+    const reportList = document.querySelector('.report-list-row');
+    if (!reportList) return;
+  
+    const reportItems = reportList.querySelectorAll(':scope > .col');
+    const loadMoreBtn = document.getElementById('load-more-btn-report');
+    
+    // 8件以下の場合はボタン自体を消す（9件目から「もっと見る」が出るため）
+    if (reportItems.length <= 8) {
+        if (loadMoreBtn) loadMoreBtn.parentElement.style.display = 'none';
+        return;
+    }
+  
+    // 初期化：8件目以降（つまり9件目から）を隠す
+    const hideItems = () => {
+        reportItems.forEach((item, index) => {
+            // indexは0から始まるため、indexが8以上（9件目以降）を隠す
+            if (index >= 8) item.classList.add('d-none');
+        });
+        loadMoreBtn.innerHTML = 'さらに見る';
+        loadMoreBtn.classList.add('collapsed');
+    };
+    hideItems();
+
+    // ボタンクリック時の挙動
+    loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const isCollapsed = loadMoreBtn.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            // 開く処理
+            reportItems.forEach(item => item.classList.remove('d-none'));
+            loadMoreBtn.innerHTML = 'もとに戻す';
+            loadMoreBtn.classList.remove('collapsed');
+        } else {
+            // 閉じる処理
+            hideItems();
+        }
+    });
+});

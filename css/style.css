@@ -1178,27 +1178,39 @@ FACILITY ==================================================*/
   }
  } /* xl(1200px) */
 
- /*  ==================================================
+/*  ==================================================
 NEWS ==================================================*/
-/* info */
-#load-more-btn {
+#load-more-btn, 
+#load-more-btn-report {
   width: 291px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.info-section .accordion-button::after {
+.info-section .accordion-button::after, 
+.report-section .accordion-button::after {
   background-color: transparent;
   border: none;
   border-radius: 0;
 }
 
-.info-section .accordion-button:not(.collapsed) {
+.info-section .accordion-button:not(.collapsed), 
+.report-section .accordion-button:not(.collapsed) {
     color: var(--color-white);
+    background-color: var(--color-navy);
 }
 
-.info-section .accordion-button:not(.collapsed)::after {
+.info-section .accordion-button:not(.collapsed)::after, 
+.report-section .accordion-button:not(.collapsed)::after {
   background-image: url(../images/icon_arrow_back_ios_new.svg) !important;
   transform: rotate(90deg) !important;
   background-position: center !important;
 }
+
+/* md(768px) */
+@media screen and (min-width: 768px) {
+  .info-section .accordion-button, 
+  .report-section .accordion-button {
+    font-size: 18px !important;
+  }
+} /* md(768px) */
