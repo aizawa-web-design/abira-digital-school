@@ -292,7 +292,7 @@ a {
   transform: translate(-50%, -50%);
   font-size: clamp(64px, 5.98vw + 41.59px, 128px);
   color: var(--color-white);
-  z-index: 0;
+  z-index: -1;
   white-space: nowrap;
   pointer-events: none;
 }
@@ -940,7 +940,7 @@ TOP
 
 /* lg(992px) */
 @media (min-width: 992px) {
-  .section-content-box h4 {
+  .section-content-box h3 {
     font-size: 24px;
   }
 
