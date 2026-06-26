@@ -657,7 +657,7 @@ header
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(217, 249, 255, 0.93);;
+    background-color: rgba(217, 249, 255, 0.95);;
     padding: 80px 0;
     z-index: 1000;
     max-height: calc(100vh - 70px);
