@@ -112,7 +112,7 @@ const initSwiper = () => {
 if (swipers.length > 0) return;
 
 // .swiper-menu クラスを持つ要素をすべて取得
-const swiperElements = document.querySelectorAll('.swiper-menu');
+const swiperElements = document.querySelectorAll('.swiper');
 
 // そもそも要素が存在しなければ何もしない（ここでエラー回避）
 if (swiperElements.length === 0) return;

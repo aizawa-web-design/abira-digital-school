@@ -553,7 +553,7 @@ a {
 }
 
 .accordion-button::after {
-  background-image: url('../images/icon_arrow_back_ios_new.svg') !important;
+  background-image: url('../img/common/icon_arrow_back_ios_new.svg') !important;
   transform: rotate(-90deg);
   background-size: 18px 18px !important;
   background-position: calc(50% - 2px)center !important;
@@ -567,7 +567,7 @@ a {
 
 .accordion-button:not(.collapsed)::after {
   background-color: var(--color-white);
-  background-image: url('../images/icon-arrow_back_ios_new_navy.svg') !important;
+  background-image: url('../img/common/icon-arrow_back_ios_new_navy.svg') !important;
   transform: rotate(90deg) !important;
   background-position: center !important;
 }
@@ -1220,7 +1220,7 @@ NEWS
 
 .info-section .accordion-button:not(.collapsed)::after, 
 .report-section .accordion-button:not(.collapsed)::after {
-  background-image: url(../images/icon_arrow_back_ios_new.svg) !important;
+  background-image: url(../img/common/icon_arrow_back_ios_new.svg) !important;
   transform: rotate(90deg) !important;
   background-position: center !important;
 }
