@@ -887,6 +887,10 @@ TOP
   opacity: 0.6;
 }
 
+.update-section .badge-fixed {
+  width: 80px;
+}
+
 /* lg(992px) */
 @media (min-width: 992px) {
   .list-group-item a {
@@ -1212,6 +1216,10 @@ NEWS
   background-image: url(../images/icon_arrow_back_ios_new.svg) !important;
   transform: rotate(90deg) !important;
   background-position: center !important;
+}
+
+.info-section .badge-fixed {
+  width: 80px;
 }
 
 /* md(768px) */
