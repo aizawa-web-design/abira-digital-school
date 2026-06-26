@@ -755,7 +755,7 @@ TOP
 
 .hero-title-overlay {
   position: absolute;
-  bottom: -22%;
+  bottom: -28%;
   left: -1rem;
   z-index: 10;
 }
@@ -787,18 +787,13 @@ TOP
   }
 
   .hero-title-overlay {
-    bottom: 12%;
+    bottom: 5%;
     left: 1rem; 
   }
 } /* md(768px) */
 
 /* lg(992px) */
 @media (min-width: 992px) {
-  .hero-title-overlay {
-    bottom: 12%;
-    left: 1rem; 
-  }
-
   .highlight-bg {
     font-size: clamp(36px, 4.44vw, 64px);;
   }
