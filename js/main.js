@@ -18,51 +18,6 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 targets.forEach(target => observer.observe(target));
 
-// スライダー用の変数を初期化
-let swiperMenu = null;
-const mediaQuery = window.matchMedia('(max-width: 991px)');
-
-const initSwiper = () => {
-    // Swiperがまだ生成されていない場合のみ生成
-    if (!swiperMenu) {
-        swiperMenu = new Swiper('.swiper-menu', {
-            loop: true,
-            spaceBetween: 30,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-    }
-};
-
-const destroySwiper = () => {
-    // Swiperが存在する場合のみ破棄
-    if (swiperMenu) {
-        swiperMenu.destroy(true, true); // true, trueでスタイルもリセット
-        swiperMenu = null;
-    }
-};
-
-// 画面幅による切り替え判定
-const handleBreakpoint = (e) => {
-    if (e.matches) {
-        // 991px以下のとき：スライダー有効
-        initSwiper();
-    } else {
-        // 992px以上のとき：スライダー解除
-        destroySwiper();
-    }
-};
-
-// 初回実行と、画面幅変更時のリスナー登録
-handleBreakpoint(mediaQuery);
-mediaQuery.addEventListener('change', handleBreakpoint);
-
 // お知らせ一覧の「さらに見る」
 document.addEventListener("DOMContentLoaded", () => {
     const newsList = document.getElementById('news-list');
@@ -148,3 +103,57 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// swiperの管理
+let swipers = [];
+
+const initSwiper = () => {
+// 既に初期化済みなら処理を終了（重複作成防止）
+if (swipers.length > 0) return;
+
+// .swiper-menu クラスを持つ要素をすべて取得
+const swiperElements = document.querySelectorAll('.swiper-menu');
+
+// そもそも要素が存在しなければ何もしない（ここでエラー回避）
+if (swiperElements.length === 0) return;
+
+// 見つかったすべてのスライダーを個別に初期化
+swiperElements.forEach((el) => {
+    swipers.push(new Swiper(el, {
+        loop: true,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    }));
+});
+};
+
+const destroySwiper = () => {
+// 配列に格納されたスライダーをすべて破棄
+swipers.forEach(swiper => {
+    swiper.destroy(true, true);
+});
+swipers = []; // 配列を空にする
+};
+
+// 画面幅による切り替え判定
+const handleBreakpoint = (e) => {
+if (e.matches) {
+    // 991px以下：スライダー生成
+    initSwiper();
+} else {
+    // 992px以上：スライダー破棄
+    destroySwiper();
+}
+};
+
+// 初期実行とリスナー登録
+const mediaQuery = window.matchMedia('(max-width: 991px)');
+handleBreakpoint(mediaQuery);
+mediaQuery.addEventListener('change', handleBreakpoint);
