@@ -1225,6 +1225,14 @@ NEWS
   background-position: center !important;
 }
 
+.report-custom-card-link {
+  transition: all var(--transition-speed) ease;
+}
+
+.report-custom-card-link:hover {
+  opacity: 0.7;
+}
+
 /* md(768px) */
 @media screen and (min-width: 768px) {
   .info-section .accordion-button, 
