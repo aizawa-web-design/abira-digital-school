@@ -1,68 +1,94 @@
-// 画面インアニメーション
-const targets = document.querySelectorAll('.js-fade-in-up');
+// ===============================
+// 共通:画面内表示アニメーション
+// ===============================
+const fadeInTargets = document.querySelectorAll('.js-fade-in-up');
 
-const options = {
-    root: null,
-    rootMargin: '0px 0px -20% 0px',
-    threshold: 0
-};
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
 
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-        }
+  entries.forEach(entry => {
+
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.add('is-visible');
+    observer.unobserve(entry.target);
+
+  });
+
+}, {
+  root: null,
+  rootMargin: '0px 0px -20% 0px',
+  threshold: 0
+});
+
+fadeInTargets.forEach(target => {
+  fadeInObserver.observe(target);
+});
+
+
+// ===============================
+// NEWSページ：「さらに見る」ボタン
+// ===============================
+window.addEventListener('DOMContentLoaded', () => {
+
+  const newsList = document.getElementById('news-list');
+  if (!newsList) return;
+
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  if (!loadMoreBtn) return;
+
+  const newsItems = newsList.querySelectorAll(':scope > li');
+  const visibleCount = 5;
+
+  // 5件以下ならボタン非表示
+  if (newsItems.length <= visibleCount) {
+    loadMoreBtn.parentElement.style.display = 'none';
+    return;
+  }
+
+  // 一覧を閉じる
+  const collapseNews = () => {
+
+    newsItems.forEach((item, index) => {
+      item.classList.toggle('d-none', index >= visibleCount);
     });
-}, options);
 
-targets.forEach(target => observer.observe(target));
+    loadMoreBtn.textContent = 'さらに見る';
+    loadMoreBtn.classList.add('collapsed');
 
-// お知らせ一覧の「さらに見る」
-document.addEventListener("DOMContentLoaded", () => {
-    const newsList = document.getElementById('news-list');
-    if (!newsList) return;
+  };
 
-    const listItems = newsList.querySelectorAll(':scope > li');
-    const loadMoreBtn = document.getElementById('load-more-btn');
+  // 一覧を開く
+  const expandNews = () => {
 
-    // 5件以下の場合はボタンを非表示にする
-    if (listItems.length <= 5) {
-        if (loadMoreBtn) loadMoreBtn.parentElement.style.display = 'none';
-        return;
+    newsItems.forEach(item => {
+      item.classList.remove('d-none');
+    });
+
+    loadMoreBtn.textContent = 'もとに戻す';
+    loadMoreBtn.classList.remove('collapsed');
+
+  };
+
+  // 初期表示
+  collapseNews();
+
+  // ボタン
+  loadMoreBtn.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    if (loadMoreBtn.classList.contains('collapsed')) {
+      expandNews();
+    } else {
+      collapseNews();
     }
 
-    // 初期化実行（ボタンにも collapsed を付ける）
-    const hideItems = () => {
-        listItems.forEach((item, index) => {
-            if (index >= 5) item.classList.add('d-none');
-        });
-        loadMoreBtn.innerHTML = 'さらに見る';
-        loadMoreBtn.classList.add('collapsed'); // アイコンを下向きに
-    };
-    hideItems();
+  });
 
-    // ボタンクリック時の挙動
-    loadMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // collapsedクラスを持っているか（閉じているか）で判定
-        const isCollapsed = loadMoreBtn.classList.contains('collapsed');
-
-        if (isCollapsed) {
-            // 開く処理
-            listItems.forEach(item => item.classList.remove('d-none'));
-            loadMoreBtn.innerHTML = 'もとに戻す';
-            loadMoreBtn.classList.remove('collapsed'); // アイコンを上向きに
-        } else {
-            // 閉じる処理
-            hideItems();
-        }
-    });
 });
 
 // ===============================
-// Swiper管理
+// 共通:Swiper管理
 // ===============================
 const swipers = {
     mobile: [],
