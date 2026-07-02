@@ -493,33 +493,59 @@ a {
   outline: 2px solid var(--color-accent);
 }
 
+/* swiper-report（活動報告） */
+.swiper-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:3rem;
+  margin-top:1.5rem;
+}
+
+.swiper-nav .swiper-pagination{
+  position:static;
+  width:auto;
+  padding:0;
+}
+
+.swiper-nav .swiper-button-prev,
+.swiper-nav .swiper-button-next{
+  position:relative;
+  margin:0;
+}
+
 /*  lg(992px) */
 @media screen and (min-width: 992px) {
   .swiper {
     width: 100%;
   }
   
-  .swiper-wrapper {
+  .swiper:not(.swiper-report) .swiper-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 2rem 1rem;
   }
   
-  .swiper-slide {
+  .swiper:not(.swiper-report) .swiper-slide {
     width: calc(33.333% - 20px);
   }
 
-  .swiper-button-prev, 
-  .swiper-button-next, 
-  .swiper-pagination {
+  .swiper:not(.swiper-report) .swiper-button-prev, 
+  .swiper:not(.swiper-report) .swiper-button-next {
     display: none;
   }
+
+  .menu-section .swiper-pagination, 
+  .gear-section .swiper-pagination {
+    display: none;
+  }
+
 } /*  lg(992px) */
 
 /* xl(1200px) */
 @media screen and (min-width: 1200px) {
-  .swiper-slide {
+  .swiper:not(.swiper-report) .swiper-slide {
     flex: 0 0 calc((100% - 16px * 3) / 4);
   }
 } /* xl(1200px) */
@@ -1198,11 +1224,16 @@ iframe {
 /*  ==================================================
 NEWS
 ==================================================*/
-#load-more-btn, 
-#load-more-btn-report {
-  width: 291px;
+#load-more-btn {
+  width: 160px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
+  border-bottom: 2px solid var(--color-accent);
+  transition: all var(--transition-speed) ease;
+}
+
+#load-more-btn:hover {
+  opacity: 0.6;
 }
 
 .info-section .accordion-button::after, 
@@ -1210,9 +1241,14 @@ NEWS
   background-color: transparent;
   border: none;
   border-radius: 0;
+  width: 32px !important;
+  height: 32px !important;
 }
 
-.info-section .accordion-button:not(.collapsed), 
+.info-section .accordion-button::after {
+  background-image: url(../img/common/icon-arrow_back_ios_new_navy.svg) !important;
+}
+
 .report-section .accordion-button:not(.collapsed) {
     color: var(--color-white);
     background-color: var(--color-navy);
@@ -1223,6 +1259,10 @@ NEWS
   background-image: url(../img/common/icon_arrow_back_ios_new.svg) !important;
   transform: rotate(90deg) !important;
   background-position: center !important;
+}
+
+.info-section .accordion-button:not(.collapsed)::after {
+  background-image: url(../img/common/icon-arrow_back_ios_new_navy.svg) !important;
 }
 
 .report-custom-card-link {

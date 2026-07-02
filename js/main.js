@@ -61,99 +61,157 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 活動報告一覧の「さらに見る」
-document.addEventListener("DOMContentLoaded", () => {
-    const reportList = document.querySelector('.report-list-row');
-    if (!reportList) return;
-
-    const reportItems = reportList.querySelectorAll(':scope > .col');
-    const loadMoreBtn = document.getElementById('load-more-btn-report');
-
-    // 8件以下の場合はボタン自体を消す（9件目から「もっと見る」が出るため）
-    if (reportItems.length <= 8) {
-        if (loadMoreBtn) loadMoreBtn.parentElement.style.display = 'none';
-        return;
-    }
-
-    // 初期化：8件目以降（つまり9件目から）を隠す
-    const hideItems = () => {
-        reportItems.forEach((item, index) => {
-            // indexは0から始まるため、indexが8以上（9件目以降）を隠す
-            if (index >= 8) item.classList.add('d-none');
-        });
-        loadMoreBtn.innerHTML = 'さらに見る';
-        loadMoreBtn.classList.add('collapsed');
-    };
-    hideItems();
-
-    // ボタンクリック時の挙動
-    loadMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const isCollapsed = loadMoreBtn.classList.contains('collapsed');
-
-        if (isCollapsed) {
-            // 開く処理
-            reportItems.forEach(item => item.classList.remove('d-none'));
-            loadMoreBtn.innerHTML = 'もとに戻す';
-            loadMoreBtn.classList.remove('collapsed');
-        } else {
-            // 閉じる処理
-            hideItems();
-        }
-    });
-});
-
-// swiperの管理
-let swipers = [];
-
-const initSwiper = () => {
-// 既に初期化済みなら処理を終了（重複作成防止）
-if (swipers.length > 0) return;
-
-// .swiper-menu クラスを持つ要素をすべて取得
-const swiperElements = document.querySelectorAll('.swiper');
-
-// そもそも要素が存在しなければ何もしない（ここでエラー回避）
-if (swiperElements.length === 0) return;
-
-// 見つかったすべてのスライダーを個別に初期化
-swiperElements.forEach((el) => {
-    swipers.push(new Swiper(el, {
+// ===============================
+// Swiper管理
+// ===============================
+const swipers = {
+    mobile: [],
+    report: []
+  };
+  
+  // ===============================
+  // swiper-mobile初期化（スマホのみ）
+  // ===============================
+  const initMobileSwiper = () => {
+  
+    document.querySelectorAll('.swiper-mobile').forEach(el => {
+  
+      if (el.swiper) return;
+  
+      const area = el.closest('.swiper-area');
+      if (!area) return;
+  
+      const swiper = new Swiper(el, {
+  
         loop: true,
         spaceBetween: 30,
+  
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+          nextEl: area.querySelector('.swiper-button-next'),
+          prevEl: area.querySelector('.swiper-button-prev'),
         },
+  
         pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+          el: area.querySelector('.swiper-pagination'),
+          clickable: true,
+        }
+  
+      });
+  
+      swipers.mobile.push(swiper);
+  
+    });
+  
+  };
+  
+  
+  // ===============================
+  // swiper-report初期化（常時有効）
+  // ===============================
+  const initReportSwiper = () => {
+  
+    document.querySelectorAll('.swiper-report').forEach(el => {
+  
+      if (el.swiper) return;
+  
+      const area = el.closest('.swiper-area');
+      if (!area) return;
+  
+      const swiper = new Swiper(el, {
+  
+        slidesPerView: 1,
+        spaceBetween: 24,
+        watchOverflow: true,
+  
+        navigation: {
+          nextEl: area.querySelector('.swiper-button-next'),
+          prevEl: area.querySelector('.swiper-button-prev'),
         },
-    }));
-});
-};
-
-const destroySwiper = () => {
-// 配列に格納されたスライダーをすべて破棄
-swipers.forEach(swiper => {
-    swiper.destroy(true, true);
-});
-swipers = []; // 配列を空にする
-};
-
-// 画面幅による切り替え判定
-const handleBreakpoint = (e) => {
-if (e.matches) {
-    // 991px以下：スライダー生成
-    initSwiper();
-} else {
-    // 992px以上：スライダー破棄
-    destroySwiper();
-}
-};
-
-// 初期実行とリスナー登録
-const mediaQuery = window.matchMedia('(max-width: 991px)');
-handleBreakpoint(mediaQuery);
-mediaQuery.addEventListener('change', handleBreakpoint);
+  
+        pagination: {
+          el: area.querySelector('.swiper-pagination'),
+          clickable: true,
+        }
+  
+      });
+  
+      swipers.report.push(swiper);
+  
+    });
+  
+  };
+  
+  
+  // ===============================
+  // swiper-mobile破棄（PC表示時）
+  // ===============================
+  const destroyMobileSwiper = () => {
+  
+    swipers.mobile.forEach(swiper => {
+  
+      const slides = swiper.el.querySelectorAll('.swiper-slide');
+      const wrapper = swiper.el.querySelector('.swiper-wrapper');
+  
+      swiper.destroy(true, true);
+  
+      slides.forEach(slide => {
+        slide.removeAttribute('style');
+  
+        slide.classList.remove(
+          'swiper-slide-active',
+          'swiper-slide-next',
+          'swiper-slide-prev',
+          'swiper-slide-visible',
+          'swiper-slide-fully-visible'
+        );
+      });
+  
+      wrapper?.removeAttribute('style');
+  
+      swiper.el.classList.remove(
+        'swiper-initialized',
+        'swiper-horizontal',
+        'swiper-backface-hidden'
+      );
+  
+    });
+  
+    swipers.mobile.length = 0;
+  
+  };
+  
+  
+  // ===============================
+  // ブレークポイント処理
+  // ===============================
+  const mediaQuery = window.matchMedia('(max-width: 991px)');
+  
+  const handleBreakpoint = (e) => {
+  
+    if (e.matches) {
+  
+      // スマホ
+      initMobileSwiper();
+      initReportSwiper();
+  
+    } else {
+  
+      // PC
+      destroyMobileSwiper();
+      initReportSwiper();
+  
+    }
+  
+  };
+  
+  
+  // ===============================
+  // 初期化
+  // ===============================
+  window.addEventListener('load', () => {
+  
+    handleBreakpoint(mediaQuery);
+  
+    mediaQuery.addEventListener('change', handleBreakpoint);
+  
+  });
