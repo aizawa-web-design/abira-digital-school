@@ -241,3 +241,62 @@ const swipers = {
     mediaQuery.addEventListener('change', handleBreakpoint);
   
   });
+
+//   メインビジュアル比較用
+// ========================================
+// B案：メインビジュアル タイピング
+// ========================================
+
+const typingLines = document.querySelectorAll('.typing-line');
+
+if (typingLines.length) {
+
+const typeLine = (element, speed = 110) => {
+
+    return new Promise(resolve => {
+    
+        // 他の行のカーソルを消す
+        typingLines.forEach(line => line.classList.remove('typing'));
+    
+        // 今入力している行だけカーソル表示
+        element.classList.add('typing');
+    
+        const text = element.dataset.text;
+        element.textContent = '';
+    
+        let index = 0;
+    
+        const timer = setInterval(() => {
+    
+        element.textContent += text[index];
+        index++;
+    
+        if (index >= text.length) {
+    
+            clearInterval(timer);
+            resolve();
+    
+        }
+    
+        }, speed);
+    
+    });
+    
+    };
+
+    (async () => {
+
+        await typeLine(typingLines[0]);
+      
+        await new Promise(r => setTimeout(r, 300));
+      
+        await typeLine(typingLines[1]);
+      
+        // 最後の行だけカーソルを1.5秒点滅
+        setTimeout(() => {
+          typingLines[1].classList.remove('typing');
+        }, 1500);
+      
+      })();
+
+}

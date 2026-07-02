@@ -1303,3 +1303,45 @@ ARTICLE
     font-size: 40px;
   }
 } /* lg(992px) */
+
+/*  ==================================================
+メインビジュアル比較用
+==================================================*/
+/* A案 */
+.hero-section-a .highlight-bg {
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    #eefbff 30%,
+    #b3efff 50%,
+    #eefbff 70%,
+    #ffffff 100%
+  );
+  background-size: 250% 250%;
+  animation: gradient-move 12s ease-in-out infinite;
+}
+
+/* B案 */
+.typing-line{
+  position: relative;
+  display:inline-block;
+  white-space: nowrap;
+}
+
+.typing-line.typing::after{
+  content:"|";
+  margin-left:.08em;
+  animation: typingCursor .8s infinite;
+}
+
+@keyframes typingCursor{
+
+  0%,50%{
+      opacity:1;
+  }
+
+  50.1%,100%{
+      opacity:0;
+  }
+
+}
