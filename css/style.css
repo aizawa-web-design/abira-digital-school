@@ -1119,7 +1119,7 @@ ABOUT
 /*  ==================================================
 JOIN
 ==================================================*/
-/* schedule */
+/*========= schedule =========*/
 .schedule-section .badge-fixed {
   width: 96px;
   font-size: 20px;
@@ -1140,7 +1140,7 @@ JOIN
   }
 } /* md(768px) */
 
-/* entry */
+/*========= entry =========*/
 .entry-section .attention {
   font-size: 18px;
 }
@@ -1186,13 +1186,37 @@ JOIN
 /*  ==================================================
 FACILITY
 ==================================================*/
-/* base */
+/*========= gear =========*/
+.gear-img-01 {
+  transform: translateX(-8%) translateY(8%) scale(1.2);
+  transform-origin: center center;
+}
+
+.gear-img-02 {
+  object-position: center 40% ;
+}
+
+.gear-img-03 {
+  object-position: center 10%;
+}
+
+.gear-img-05 {
+  transform: scale(1.1);
+  transform-origin: right bottom;
+}
+
+.gear-img-06 {
+  object-position: left 75%;
+  transform: scale(1.1);
+  transform-origin: left bottom;
+}
+/*========= base =========*/
 .base-section .section-content-box {
   border: none;
   background-color: transparent;
 }
 
-.base-custom-card .card-border {
+.base-custom-card .card-img-wrapper {
   aspect-ratio: 343 / 229;
   border: 4px solid var(--color-navy);
   border-radius: 40px;
@@ -1251,7 +1275,7 @@ iframe {
   .base-custom-card .card-img-wrapper {
     width: 38%;
     padding-right: 0;
-    padding-bottom: 24px;
+    margin-bottom: 24px;
   }
 
   .base-custom-card h3 {
