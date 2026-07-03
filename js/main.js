@@ -300,3 +300,14 @@ const typeLine = (element, speed = 110) => {
       })();
 
 }
+
+//   メインビジュアル比較用
+// ========================================
+// C案：メインビジュアル パララックス
+// ========================================
+const next = document.querySelector(".next-section");
+
+window.addEventListener("scroll", () => {
+  const y = window.scrollY * 0.1;
+  next.style.transform = `translateY(${-y}px)`;
+});
