@@ -305,9 +305,6 @@ const typeLine = (element, speed = 110) => {
 // ========================================
 // C案：メインビジュアル パララックス
 // ========================================
-const next = document.querySelector(".next-section");
-
-window.addEventListener("scroll", () => {
-  const y = window.scrollY * 0.1;
-  next.style.transform = `translateY(${-y}px)`;
+jarallax(document.querySelectorAll('.jarallax'), {
+  speed: 0.3
 });
