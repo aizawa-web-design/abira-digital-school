@@ -242,69 +242,28 @@ const swipers = {
   
   });
 
-//   メインビジュアル比較用
-// ========================================
-// B案：メインビジュアル タイピング
-// ========================================
+// ===============================
+// TOPページ：メインビジュアル
+// ===============================
+// Jarallaxの初期化用関数
+const initJarallax = () => {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-const typingLines = document.querySelectorAll('.typing-line');
+  // 既存のJarallaxがあれば一度破棄する
+  jarallax(document.querySelectorAll('.jarallax'), 'destroy');
 
-if (typingLines.length) {
+  // 画面幅に応じてimgPositionを変えて初期化
+  jarallax(document.querySelectorAll('.jarallax'), {
+    speed: 0.3,
+    // スマホなら左寄り、PCなら右寄りに調整
+    imgPosition: isMobile ? '20% 80%' : '80% 50%'
+  });
+};
 
-const typeLine = (element, speed = 110) => {
+// 初回実行
+initJarallax();
 
-    return new Promise(resolve => {
-    
-        // 他の行のカーソルを消す
-        typingLines.forEach(line => line.classList.remove('typing'));
-    
-        // 今入力している行だけカーソル表示
-        element.classList.add('typing');
-    
-        const text = element.dataset.text;
-        element.textContent = '';
-    
-        let index = 0;
-    
-        const timer = setInterval(() => {
-    
-        element.textContent += text[index];
-        index++;
-    
-        if (index >= text.length) {
-    
-            clearInterval(timer);
-            resolve();
-    
-        }
-    
-        }, speed);
-    
-    });
-    
-    };
-
-    (async () => {
-
-        await typeLine(typingLines[0]);
-      
-        await new Promise(r => setTimeout(r, 300));
-      
-        await typeLine(typingLines[1]);
-      
-        // 最後の行だけカーソルを1.5秒点滅
-        setTimeout(() => {
-          typingLines[1].classList.remove('typing');
-        }, 1500);
-      
-      })();
-
-}
-
-//   メインビジュアル比較用
-// ========================================
-// C案：メインビジュアル パララックス
-// ========================================
-jarallax(document.querySelectorAll('.jarallax'), {
-  speed: 0.3
+// 画面幅が変わったときに再計算
+window.addEventListener('resize', () => {
+  initJarallax();
 });

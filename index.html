@@ -33,6 +33,7 @@
   <!-- css -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jarallax@3/dist/jarallax.min.css">
   <link href="css/style.css" rel="stylesheet">
 
   <title>あびらデジタルスクール｜安平町の小中学生向けデジタル体験拠点</title>
@@ -80,22 +81,16 @@
       </div>
     </nav>
   </header>
-  <section class="hero-section py-4">
-    <div class="container">
-      <div class="hero-container position-relative">
-        <!-- 1. メイン画像（右寄せ） -->
-        <div class="hero-image-wrapper ms-auto js-fade-in-up">
-          <img src="img/pages/top/mv.webp" alt="3Dプリンティングで制作をする受講生" class="img-fluid img-main">
-        </div>
-        <!-- 2. キャッチコピー（画像の上に絶対配置） -->
-        <div class="hero-title-overlay">
-          <div class="hero-title">
-            <h1 class="highlight-bgーwrapper">
-              <span class="highlight-bg mb-2 mb-lg-3">デジタルの世界を</span><br>
-              <span class="highlight-bg">体験しよう</span>
-            </h1>
-          </div>
-        </div>
+  <section class="hero-section position-relative">
+    <div class="hero-bg jarallax">
+      <img class="jarallax-img" src="img/pages/top/mv-sp.webp" alt="">
+    </div>
+    <div class="hero-title-overlay">
+      <div class="hero-title">
+        <h1 class="highlight-bgーwrapper">
+          <span class="highlight-bg mb-2 mb-lg-3">デジタルの世界を</span><br>
+          <span class="highlight-bg">体験しよう</span>
+        </h1>
       </div>
     </div>
   </section>
@@ -116,43 +111,14 @@
       </div>
     </div>
   </section>
-  <!-- メインビジュアル比較用 -->
-  <section class="py-5 bg-light border-bottom">
-    <div class="container">
-      <div class="text-center mb-4">
-        <h2 class="heading-base mb-2">ファーストビュー比較</h2>
-        <p class="mb-0">下記のボタンから各デザイン案をご確認いただけます。</p>
-      </div>
-      <div class="row g-3 justify-content-center">
-        <div class="col-12 col-md-4">
-          <a href="./mv-a.html" class="btn btn-outline-primary w-100 py-3">
-            <strong>案①</strong><br>
-            <small>グラデーション</small>
-          </a>
-        </div>
-        <div class="col-12 col-md-4">
-          <a href="./mv-b.html" class="btn btn-outline-primary w-100 py-3">
-            <strong>案②</strong><br>
-            <small>タイピングアニメーション</small>
-          </a>
-        </div>
-        <div class="col-12 col-md-4">
-          <a href="./mv-c.html" class="btn btn-outline-primary w-100 py-3">
-            <strong>案③</strong><br>
-            <small>パララックス</small>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- 比較用セクションここまで -->
   <section class="feature-section py-5">
     <div class="container">
       <div class="row g-5">
         <div class="col-xl-4">
           <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
             <div class="card-img-wrapper">
-              <img src="img/pages/top/feature01.webp" class="card-img-top card-border feature-img-01" alt="スタッフにアイディアを話す受講生">
+              <img src="img/pages/top/feature01.webp" class="card-img-top card-border feature-img-01"
+                alt="スタッフにアイディアを話す受講生">
             </div>
             <div class="card-body d-flex flex-column align-items-center">
               <h3 class="h-m heading-base">デジタルの楽しさと出会う</h3>
@@ -176,7 +142,8 @@
         <div class="col-xl-4">
           <div class="card h-100 border-0 feature-custom-card js-fade-in-up">
             <div class="card-img-wrapper">
-              <img src="img/pages/top/feature03.webp" class="card-img-top card-border feature-img-03" alt="タブレットでイラストを描く受講生">
+              <img src="img/pages/top/feature03.webp" class="card-img-top card-border feature-img-03"
+                alt="タブレットでイラストを描く受講生">
             </div>
             <div class="card-body d-flex flex-column align-items-center">
               <h3 class="h-m heading-base">アイデアを形にできる環境</h3>
@@ -292,6 +259,7 @@
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jarallax@3/dist/jarallax.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 
