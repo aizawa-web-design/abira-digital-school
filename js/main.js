@@ -247,16 +247,13 @@ const swipers = {
 // ===============================
 // Jarallaxの初期化用関数
 const initJarallax = () => {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-  // 既存のJarallaxがあれば一度破棄する
+  // 既存のJarallaxがあれば一度破棄する（重複防止）
   jarallax(document.querySelectorAll('.jarallax'), 'destroy');
 
-  // 画面幅に応じてimgPositionを変えて初期化
+  // シンプルな設定で初期化
   jarallax(document.querySelectorAll('.jarallax'), {
-    speed: 0.3,
-    // スマホなら左寄り、PCなら右寄りに調整
-    imgPosition: isMobile ? '20% 80%' : '80% 50%'
+    speed: 0.3
+    // imgPositionオプションを削除
   });
 };
 

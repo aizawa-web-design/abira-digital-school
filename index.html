@@ -83,7 +83,12 @@
   </header>
   <section class="hero-section position-relative">
     <div class="hero-bg jarallax">
-      <img class="jarallax-img" src="img/pages/top/mv-sp.webp" alt="">
+      <picture>
+        <!-- 画面幅992px以上ならデスクトップ用を表示 -->
+        <source srcset="img/pages/top/mv-pc.webp" media="(min-width: 992px)">
+        <!-- それ以外（スマホ・タブレット）はスマホ用を表示 -->
+        <img src="img/pages/top/mv-sp.webp" alt="制作風景" class="jarallax-img">
+      </picture>
     </div>
     <div class="hero-title-overlay">
       <div class="hero-title">

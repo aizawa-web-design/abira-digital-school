@@ -794,12 +794,11 @@ TOP
 
 .hero-bg .jarallax-img {
   object-fit: cover;
-  object-position: center 35%;
 }
 
 .hero-title-overlay {
   position: absolute;
-  top: 65%;
+  bottom: 10%;
   left: -1rem;
   z-index: 10;
 }
@@ -810,33 +809,32 @@ TOP
   animation: gradient-move 8s ease infinite;
   padding: 0.5em 0.8em;
   display: inline-block;
-  font-size: 32px;
+  font-size: clamp(32px, 4.44vw, 56px);
   font-weight: 500;
   white-space: nowrap;
   line-height: 1.2;
 }
 
-/* sm(576px) */
-@media (min-width: 576px) {
-  .hero-title-overlay {
-    bottom: -5%; 
-  }
-} /* sm(576px) */
-
 /* md(768px) */
 @media (min-width: 768px) {
   .hero-title-overlay {
-    bottom: 5%;
-    left: 1rem; 
+    left: 0;
   }
 } /* md(768px) */
 
 /* lg(992px) */
-@media (min-width: 992px) {
-  .highlight-bg {
-    font-size: clamp(36px, 4.44vw, 64px);;
+@media (min-width: 992px) and (max-aspect-ratio: 1.8/1) {
+  .jarallax-img {
+      object-position: left 35% !important;
   }
-} /* lg(992px) */
+} 
+
+@media (min-width: 992px) and (min-aspect-ratio: 1.8/1) {
+  .jarallax-img {
+      object-position: 15% 40% !important;
+  }
+}
+/* lg(992px) */
 
 /*========= about =========*/
 .about-title {
