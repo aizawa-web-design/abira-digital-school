@@ -1131,6 +1131,17 @@ JOIN
   }
 } /* md(768px) */
 
+/* md(768px) */
+@media (min-width: 768px) {
+  .schedule-section .list-group-item {
+    gap: 64px;
+  }
+
+  .schedule-section .h-s {
+    font-size: 24px;
+  }
+} /* md(768px) */
+
 /*========= entry =========*/
 .entry-section .attention {
   font-size: 18px;
