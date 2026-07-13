@@ -141,10 +141,37 @@ a {
   color: var(--color-white);
 }
 
-.btn.header-cta:hover,
+.site-link-btn {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+  transition: all var(--transition-speed) ease;
+  background-size: 200% 100%;
+}
+
 .btn.site-link-btn:hover {
   background: var(--grad-white-yellow);
   border: 2px solid var(--color-accent);
+  color: var(--color-navy);
+}
+
+.header-cta {
+  width: 117px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: var(--color-accent)  !important;
+  color: var(--color-navy);
+  border: 2px solid var(--color-navy);
+  transition: all var(--transition-speed) ease;
+  background-size: 200% 100%;
+}
+
+.btn.header-cta:hover,
+.btn.page-cta-btn:hover {
+  background: var(--grad-white-yellow);
+  border: 2px solid var(--color-navy);
   color: var(--color-navy);
 }
 
@@ -633,20 +660,6 @@ header
   color: var(--color-navy);
 }
 
-.header-cta {
-  width: 117px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  background-color: var(--color-accent)  !important;
-  color: var(--color-navy);
-  border: 2px solid var(--color-navy);
-  transition: all var(--transition-speed) ease;
-  background-size: 200% 100%;
-}
-
 .custom-toggler {
     width: 44px;
     height: 44px;
@@ -720,20 +733,7 @@ header
   margin-top: 56px;
   text-align: center;
 }
-
-.site-link-btn {
-  background-color: var(--color-white);
-  color: var(--color-navy);
-  transition: all var(--transition-speed) ease;
-  background-size: 200% 100%;
-}
-
-.site-link-btn:hover {
-  background: var(--grad-white-yellow);
-  border: 2px var(--color-accent) solid;
-  background-size: 200% 100%;
-  animation: gradient-move 3s ease infinite;
-} /* nav-open */
+ /* nav-open */
 
 /* lg(992px) */
 @media (min-width: 992px) {
@@ -1105,6 +1105,30 @@ ABOUT
 .menu-img-07 {
   transform: translateY(10%) scale(1.7);
   transform-origin: center center;
+}
+
+/* ========= cta ========= */
+.page-cta-btn {
+  border: 2px solid var(--color-navy);
+  background-color: var(--color-accent);
+  color: var(--color-navy);
+  width: 343px;
+}
+
+.page-cta-btn:hover {
+  border: 2px solid var(--color-navy);
+}
+
+.cta-title {
+  font-family: var(--font-megadot);
+  line-height: 140%;
+  letter-spacing: 0.1em;
+}
+
+.cta-part {
+  background: var(--grad-blue-white);
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease infinite;
 }
 
 /*  ==================================================

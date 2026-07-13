@@ -172,38 +172,21 @@ const swipers = {
   // swiper-mobile破棄（PC表示時）
   // ===============================
   const destroyMobileSwiper = () => {
-  
+
+    // 安全弁：配列が空、または存在しない場合は何もしない
+    if (!swipers.mobile || swipers.mobile.length === 0) return;
+
     swipers.mobile.forEach(swiper => {
-  
-      const slides = swiper.el.querySelectorAll('.swiper-slide');
-      const wrapper = swiper.el.querySelector('.swiper-wrapper');
-  
+      // 安全弁：すでに破棄されている、または有効なSwiperインスタンスでない場合はスキップ
+      if (!swiper || typeof swiper.destroy !== 'function') return;
+
+      // Swiper公式の関数だけで、スタイルやクラスのクリーンアップは完璧に完了します
       swiper.destroy(true, true);
-  
-      slides.forEach(slide => {
-        slide.removeAttribute('style');
-  
-        slide.classList.remove(
-          'swiper-slide-active',
-          'swiper-slide-next',
-          'swiper-slide-prev',
-          'swiper-slide-visible',
-          'swiper-slide-fully-visible'
-        );
-      });
-  
-      wrapper?.removeAttribute('style');
-  
-      swiper.el.classList.remove(
-        'swiper-initialized',
-        'swiper-horizontal',
-        'swiper-backface-hidden'
-      );
-  
     });
-  
-    swipers.mobile.length = 0;
-  
+
+    // 最後に配列を綺麗に空にする
+    swipers.mobile = [];
+
   };
   
   
@@ -230,7 +213,6 @@ const swipers = {
   
   };
   
-  
   // ===============================
   // 初期化
   // ===============================
@@ -247,13 +229,14 @@ const swipers = {
 // ===============================
 // Jarallaxの初期化用関数
 const initJarallax = () => {
-  // 既存のJarallaxがあれば一度破棄する（重複防止）
+  if (document.querySelectorAll('.jarallax').length === 0) {
+    return;
+  }
+
   jarallax(document.querySelectorAll('.jarallax'), 'destroy');
 
-  // シンプルな設定で初期化
   jarallax(document.querySelectorAll('.jarallax'), {
     speed: 0.3
-    // imgPositionオプションを削除
   });
 };
 
