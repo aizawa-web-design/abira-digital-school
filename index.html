@@ -84,13 +84,13 @@
     </nav>
   </header>
   <section class="hero-section position-relative">
-    <div class="hero-bg jarallax">
-      <picture>
-        <!-- 画面幅992px以上ならデスクトップ用を表示 -->
-        <source srcset="img/pages/top/mv-pc.webp" media="(min-width: 992px)">
-        <!-- それ以外（スマホ・タブレット）はスマホ用を表示 -->
-        <img src="img/pages/top/mv-sp.webp" alt="制作風景" class="jarallax-img">
-      </picture>
+    <!-- W992px未満 -->
+    <div class="hero-bg jarallax hero-sp-wrap">
+      <img src="img/pages/top/mv-sp.webp" alt="制作風景" class="jarallax-img">
+    </div>
+    <!-- W992px以上） -->
+    <div class="hero-bg jarallax hero-pc-wrap">
+      <img src="img/pages/top/mv-pc.webp" alt="制作風景" class="jarallax-img">
     </div>
     <div class="hero-title-overlay">
       <div class="hero-title">
