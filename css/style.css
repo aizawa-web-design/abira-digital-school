@@ -792,14 +792,6 @@ TOP
   height: 100%;
 }
 
-.hero-pc-wrap {
-  display: none;
-}
-
-.hero-sp-wrap {
-  display: block;
-}
-
 .hero-title-overlay {
   position: absolute;
   bottom: 10%;
@@ -825,6 +817,15 @@ TOP
     left: 0;
   }
 } /* md(768px) */
+
+/*========= 0924修正箇所 =========*/
+.hero-pc-wrap {
+  display: none;
+}
+
+.hero-sp-wrap {
+  display: block;
+}
 
 /* lg(992px) */
 @media (min-width: 992px) {
@@ -856,6 +857,7 @@ TOP
     height: clamp(560px, 40vw, 1200px);
   }
 } /* xl(1200px) */
+/*========= 0924修正箇所ここまで =========*/
 
 /*========= about =========*/
 .about-title {
